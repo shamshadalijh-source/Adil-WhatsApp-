@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyBxxxxxxxxxxxxxxx"; // Apni asli key yahan paste karein
+const API_KEY = "AIzaSyBIt1C5G8AHUBHbd248bOpbAMh6IwDmXkY"; // Apni asli key yahan paste karein
 
 const chatArea = document.getElementById('chatArea');
 const userInp = document.getElementById('userInp');
