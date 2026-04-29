@@ -1,36 +1,49 @@
+const API_KEY = "YOUR_API_KEY_HERE"; // <--- Apni key yahan paste karein
 const chatArea = document.getElementById('chatArea');
 const userInp = document.getElementById('userInp');
 const sendBtn = document.getElementById('sendBtn');
 
-function botResponse(text) {
+async function getAIResponse(prompt) {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+        })
+    });
+    const data = await response.json();
+    return data.candidates[0].content.parts[0].text;
+}
+
+async function userMessage() {
+    const val = userInp.value.trim();
+    if (!val) return;
+
+    // User Message Display
+    addBubble(val, 'user');
+    userInp.value = '';
+    
+    // AI Thinking...
+    const thinkingRow = addBubble("Processing...", 'ai');
+    
+    try {
+        const reply = await getAIResponse(val);
+        thinkingRow.querySelector('.bubble').innerText = reply;
+    } catch (error) {
+        thinkingRow.querySelector('.bubble').innerText = "Opps! Connection slow hai ya key sahi nahi.";
+    }
+}
+
+function addBubble(text, type) {
     const row = document.createElement('div');
-    row.className = 'message-row ai';
+    row.className = `message-row ${type}`;
     row.innerHTML = `
-        <div class="avatar">AI</div>
+        <div class="avatar">${type === 'ai' ? 'AI' : 'Me'}</div>
         <div class="bubble">${text}</div>
     `;
     chatArea.appendChild(row);
     chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
-}
-
-function userMessage() {
-    const val = userInp.value.trim();
-    if (!val) return;
-
-    const row = document.createElement('div');
-    row.className = 'message-row user';
-    row.innerHTML = `
-        <div class="avatar">Me</div>
-        <div class="bubble">${val}</div>
-    `;
-    chatArea.appendChild(row);
-    userInp.value = '';
-    chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
-
-    // AI Thinking Simulation
-    setTimeout(() => {
-        botResponse("Analysis complete. This command is within my neural parameters. I am ready for Phase 3 integration.");
-    }, 1200);
+    return row;
 }
 
 sendBtn.onclick = userMessage;
