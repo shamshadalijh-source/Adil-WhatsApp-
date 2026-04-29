@@ -3,35 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adil AI Ultra Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Adil Intelligence | v2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="app-container">
-        <div class="glass-header">
-            <div class="status-dot"></div>
-            <h1>ADIL AI <span class="pro-tag">PRO</span></h1>
-            <p>Next-Gen Intelligence</p>
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <div class="nav-item active">💬</div>
+            <div class="nav-item">⚙️</div>
         </div>
 
-        <div class="chat-window" id="chatArea">
-            <div class="msg ai-msg">
-                Salam Adil! Main aapka advance AI hoon. Aaj hum kya naya banayenge?
+        <div class="app-core">
+            <header class="top-nav">
+                <div class="ai-branding">
+                    <div class="pulse"></div>
+                    <div>
+                        <h2>ADIL AI <span class="badge">ULTRA</span></h2>
+                        <small>Neural Network Active</small>
+                    </div>
+                </div>
+            </header>
+
+            <div class="chat-engine" id="chatArea">
+                <div class="message-row ai">
+                    <div class="avatar">AI</div>
+                    <div class="bubble">System Online. Hello Adil, how can we revolutionize your project today?</div>
+                </div>
             </div>
-        </div>
 
-        <div class="input-container">
-            <input type="text" id="userInp" placeholder="Ask anything..." autocomplete="off">
-            <button class="send-btn" id="sendBtn">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                </svg>
-            </button>
+            <footer class="action-bar">
+                <div class="input-pill">
+                    <input type="text" id="userInp" placeholder="Type your command..." autocomplete="off">
+                    <button id="sendBtn">✦</button>
+                </div>
+            </footer>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
+
