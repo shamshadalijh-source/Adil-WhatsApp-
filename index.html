@@ -1,145 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adil whatsApp</title>
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adil AI Ultra Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Username modal -->
-    <div id="username-modal" class="modal-overlay">
-        <div class="modal">
-            <h2>Join the chat</h2>
-            <p>Pick a name so others know who you are.</p>
-            <input id="username-input" type="text" placeholder="Your name" maxlength="20" />
-            <button id="username-submit">Join</button>
+
+    <div class="app-container">
+        <div class="glass-header">
+            <div class="status-dot"></div>
+            <h1>ADIL AI <span class="pro-tag">PRO</span></h1>
+            <p>Next-Gen Intelligence</p>
+        </div>
+
+        <div class="chat-window" id="chatArea">
+            <div class="msg ai-msg">
+                Salam Adil! Main aapka advance AI hoon. Aaj hum kya naya banayenge?
+            </div>
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="userInp" placeholder="Ask anything..." autocomplete="off">
+            <button class="send-btn" id="sendBtn">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                </svg>
+            </button>
         </div>
     </div>
 
-    <div class="app">
-        <!-- Sidebar: chat list -->
-        <aside class="sidebar">
-            <header class="sidebar-header">
-                <div class="avatar">
-                    <img src="https://i.pravatar.cc/100?img=12" alt="me" />
-                </div>
-                <div class="sidebar-icons">
-                    <span class="icon" title="Status">◎</span>
-                    <span class="icon" title="New chat">✎</span>
-                    <span class="icon" title="Menu">⋮</span>
-                </div>
-            </header>
-
-            <div class="search-bar">
-                <input type="text" placeholder="Search or start new chat" />
-            </div>
-
-            <ul class="chat-list">
-                <li class="chat-item active">
-                    <img class="avatar-sm" src="https://i.pravatar.cc/100?img=47" alt="" />
-                    <div class="chat-meta">
-                        <div class="chat-row">
-                            <span class="chat-name">Main Room</span>
-                            <span class="chat-time" id="last-time">now</span>
-                        </div>
-                        <div class="chat-row">
-                            <span class="chat-preview" id="last-preview">Live group chat — say hi!</span>
-                            <span class="chat-badge" id="online-count">1</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="chat-item">
-                    <img class="avatar-sm" src="https://i.pravatar.cc/100?img=32" alt="" />
-                    <div class="chat-meta">
-                        <div class="chat-row">
-                            <span class="chat-name">Alice</span>
-                            <span class="chat-time">10:24</span>
-                        </div>
-                        <div class="chat-row">
-                            <span class="chat-preview">See you tomorrow!</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="chat-item">
-                    <img class="avatar-sm" src="https://i.pravatar.cc/100?img=15" alt="" />
-                    <div class="chat-meta">
-                        <div class="chat-row">
-                            <span class="chat-name">Marcus</span>
-                            <span class="chat-time">09:11</span>
-                        </div>
-                        <div class="chat-row">
-                            <span class="chat-preview">Sent the file 📄</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="chat-item">
-                    <img class="avatar-sm" src="https://i.pravatar.cc/100?img=23" alt="" />
-                    <div class="chat-meta">
-                        <div class="chat-row">
-                            <span class="chat-name">Family</span>
-                            <span class="chat-time">Yesterday</span>
-                        </div>
-                        <div class="chat-row">
-                            <span class="chat-preview">Mom: Don't forget dinner</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="chat-item">
-                    <img class="avatar-sm" src="https://i.pravatar.cc/100?img=5" alt="" />
-                    <div class="chat-meta">
-                        <div class="chat-row">
-                            <span class="chat-name">Work Team</span>
-                            <span class="chat-time">Mon</span>
-                        </div>
-                        <div class="chat-row">
-                            <span class="chat-preview">Standup at 9am</span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </aside>
-
-        <!-- Chat window -->
-        <main class="chat">
-            <header class="chat-header">
-                <img class="avatar-sm" src="https://i.pravatar.cc/100?img=47" alt="" />
-                <div class="chat-header-meta">
-                    <div class="chat-header-name">Main Room</div>
-                    <div class="chat-header-status" id="status-text">connecting…</div>
-                </div>
-                <div class="chat-header-icons">
-                    <span class="icon" title="Search">⌕</span>
-                    <span class="icon" title="Menu">⋮</span>
-                </div>
-            </header>
-
-            <div class="messages" id="messages">
-                <div class="date-divider"><span>Today</span></div>
-            </div>
-
-            <footer class="composer">
-                <span class="icon" title="Emoji">☺</span>
-                <span class="icon" title="Attach">📎</span>
-                <input
-                    id="message-input"
-                    type="text"
-                    placeholder="Type a message"
-                    autocomplete="off"
-                />
-                <button id="send-btn" title="Send">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                        <path d="M2 21l21-9L2 3v7l15 2-15 2z"/>
-                    </svg>
-                </button>
-            </footer>
-        </main>
-    </div>
-
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <script src="script.js"></script>
-
-
 </body>
 </html>
