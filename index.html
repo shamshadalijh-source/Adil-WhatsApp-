@@ -1,46 +1,112 @@
 <!DOCTYPE html>
+<html<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adil Intelligence | v2.0</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <!-- Character encoding -->
+  <meta charset="UTF-8" />
+
+  <!-- Mobile-first responsive viewport (prevents zoom, fits notches) -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+  <!-- PWA / native-feel meta tags so it behaves like an installed Play Store app -->
+  <meta name="theme-color" content="#05070d" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Nexus AI" />
+  <meta name="application-name" content="Nexus AI" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="description" content="Nexus AI — your intelligent chat assistant." />
+
+  <!-- App icon (Play Store / Add to Home Screen) -->
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Google fonts: Inter for UI text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+  <!-- Feather icon library (provides menu / mic / send / settings icons) -->
+  <script src="https://unpkg.com/feather-icons" defer></script>
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <title>Nexus AI</title>
 </head>
+
 <body>
-    <div class="main-wrapper">
-        <div class="sidebar">
-            <div class="nav-item active">💬</div>
-            <div class="nav-item">⚙️</div>
-        </div>
+  <!-- ============== APP SHELL ============== -->
+  <div id="app" class="app-shell">
 
-        <div class="app-core">
-            <header class="top-nav">
-                <div class="ai-branding">
-                    <div class="pulse"></div>
-                    <div>
-                        <h2>ADIL AI <span class="badge">ULTRA</span></h2>
-                        <small>Neural Network Active</small>
-                    </div>
-                </div>
-            </header>
+    <!-- ============== HEADER ============== -->
+    <header class="app-header" role="banner">
+      <!-- Brand / app name -->
+      <div class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <h1 class="brand-name">Nexus AI</h1>
+      </div>
 
-            <div class="chat-engine" id="chatArea">
-                <div class="message-row ai">
-                    <div class="avatar">AI</div>
-                    <div class="bubble">System Online. Hello Adil, how can we revolutionize your project today?</div>
-                </div>
-            </div>
+      <!-- Settings button -->
+      <button id="settings-btn"
+              class="icon-btn"
+              type="button"
+              aria-label="Open settings">
+        <i data-feather="settings" aria-hidden="true"></i>
+      </button>
+    </header>
 
-            <footer class="action-bar">
-                <div class="input-pill">
-                    <input type="text" id="userInp" placeholder="Type your command..." autocomplete="off">
-                    <button id="sendBtn">✦</button>
-                </div>
-            </footer>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <!-- ============== CHAT AREA (scrollable) ============== -->
+    <main id="chat-container"
+          class="chat-container"
+          role="main"
+          aria-live="polite"
+          aria-label="Conversation with Nexus AI">
+      <!-- Chat messages are injected here by script.js -->
+    </main>
+
+    <!-- ============== BOTTOM INPUT BAR ============== -->
+    <footer class="input-bar" role="contentinfo">
+      <form id="composer" class="composer" autocomplete="off">
+
+        <!-- Text input -->
+        <label for="message-input" class="visually-hidden">Type your message</label>
+        <input id="message-input"
+               class="message-input"
+               type="text"
+               name="message"
+               placeholder="Ask Nexus anything..."
+               enterkeyhint="send"
+               autocomplete="off"
+               autocapitalize="sentences"
+               spellcheck="true" />
+
+        <!-- Microphone (voice input) -->
+        <button id="mic-btn"
+                class="icon-btn mic-btn"
+                type="button"
+                aria-label="Start voice input">
+          <i data-feather="mic" aria-hidden="true"></i>
+        </button>
+
+        <!-- Send button -->
+        <button id="send-btn"
+                class="send-btn"
+                type="submit"
+                aria-label="Send message">
+          <i data-feather="arrow-up" aria-hidden="true"></i>
+        </button>
+
+      </form>
+    </footer>
+
+  </div>
+
+  <!-- External script -->
+  <script src="script.js" defer></script>
 </body>
-</html>
-
+        </html>
